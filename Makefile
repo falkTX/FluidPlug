@@ -78,7 +78,7 @@ FluidGM.lv2/FluidPlug.sf2:
 %.lv2/FluidPlug.so: source/FluidPlug.c
 	$(CC) $< -DFLUIDPLUG_LABEL=\"$*\" $(BUILD_C_FLAGS) $(FLUIDSYNTH_FLAGS) $(LINK_FLAGS) $(FLUIDSYNTH_LIBS) $(SHARED) -o $@
 
-%.lv2/FluidPlug.ttl: %.lv2/FluidPlug.sf2 exporter
+%.lv2/FluidPlug.ttl:
 	sed "s/xLABELx/$*/" source/FluidPlug.ttl.p1 > $*.lv2/FluidPlug.ttl
 	cd $*.lv2 && ../exporter >> FluidPlug.ttl
 	sed "s/xLABELx/$*/" source/FluidPlug.ttl.p2 >> $*.lv2/FluidPlug.ttl
