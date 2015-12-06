@@ -56,7 +56,7 @@ int main()
     printf("        lv2:maximum %i ;\n", count);
     printf("        lv2:scalePoint [\n");
 
-    int index = 1;
+    int index = 0;
     sfont->iteration_start(sfont);
     for (; sfont->iteration_next(sfont, &preset) != 0; ++index)
     {
@@ -71,11 +71,11 @@ int main()
             printf("%03i:", preset.get_banknum(&preset)+1);
 
         if (count > 100)
-            printf("%03i", index);
+            printf("%03i", index+1);
         else if (count > 10)
-            printf("%02i", index);
+            printf("%02i", index+1);
         else
-            printf("%i", index);
+            printf("%i", index+1);
 
         printf(" %s\" ;\n", name);
         printf("            rdf:value %i ;\n", index);
