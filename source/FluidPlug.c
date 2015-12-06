@@ -1,18 +1,18 @@
 /*
- * 2FS
+ * FluidPlug - SoundFonts as LV2 plugins via FluidSynth
  * Copyright (C) 2015 Filipe Coelho <falktx@falktx.com>
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or any later version.
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public License
+ * as published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
  *
- * For a full copy of the GNU General Public License see the LICENSE file.
+ * For a full copy of the GNU Library General Public License see the LICENSE file.
  */
 
 #include <stdbool.h>
@@ -26,20 +26,29 @@
 #include <lv2/lv2plug.in/ns/ext/midi/midi.h>
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
 
-#ifndef _2FS_LABEL
-#error _2FS_LABEL undefined
+#ifndef FLUIDPLUG_LABEL
+#error FLUIDPLUG_LABEL undefined
 #endif
 
-#define _2FS_PREFIX "http://kxstudio.sf.net/plugins/2fs_"
-#define _2FS_URI    _2FS_PREFIX _2FS_LABEL
+#define FLUIDPLUG_PREFIX "http://kxstudio.linuxaudio.org/plugins/FluidPlug_"
+#define FLUIDPLUG_URI    FLUIDPLUG_PREFIX FLUIDPLUG_LABEL
+
+typedef struct {
+    int bank;
+    int prog;
+} BankProgram;
 
 typedef struct {
     // fluidsynth data
+    BankProgram*      programs;
     fluid_settings_t* settings;
     fluid_synth_t*    synth;
-    unsigned          synthId;
+    int               synthId;
+
     // lv2 data
-    float*                   buffers[3];
+    float*                   buffers[2];
+    const float*             controlProgram;
+    int                      currentProgram;
     const LV2_Atom_Sequence* events;
     LV2_URID                 midiEventURID;
     bool                     needsReset;
@@ -52,7 +61,7 @@ typedef enum {
     kPortProgram
 } FluidSynthPluginPorts;
 
-static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor * descriptor, double sampleRate, const char* bundlePath, const LV2_Feature* const* features)
+static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, double sampleRate, const char* bundlePath, const LV2_Feature* const* features)
 {
     const LV2_URID_Map* uridMap = NULL;
 
@@ -93,46 +102,64 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor * descriptor, dou
     fluid_synth_set_polyphony(synth, 32);
     fluid_synth_set_sample_rate(synth, (float)sampleRate);
 
-    char* filename = malloc(strlen(bundlePath) + 8 /* strlen("/2fs.sf2") */ + 2);
+    char* filename = malloc(strlen(bundlePath) + 14 /* strlen("/FluidPlug.sf2") */ + 1);
 
     if (filename == NULL)
         goto cleanup_synth;
 
     strcpy(filename, bundlePath);
-    strcat(filename, "/2fs.sf2");
+    strcat(filename, "/FluidPlug.sf2");
 
-    const int synthId = fluid_synth_sfload(synth, filename, 0);
+    const int synthId = fluid_synth_sfload(synth, filename, 1);
 
     free(filename);
 
     if (synthId < 0)
         goto cleanup_synth;
 
-    fluid_synth_program_reset(synth);
-
     fluid_sfont_t* const sfont = fluid_synth_get_sfont_by_id(synth, synthId);
 
     if (sfont == NULL)
         goto cleanup_synth;
 
+    size_t count = 0;
     fluid_preset_t preset;
-    sfont->iteration_start(sfont);
 
-    if (sfont->iteration_next(sfont, &preset) == 0)
+    sfont->iteration_start(sfont);
+    for (; sfont->iteration_next(sfont, &preset) != 0;)
+        ++count;
+
+    if (count == 0)
         goto cleanup_synth;
 
-    const int bank = preset.get_banknum(&preset);
-    const int prog = preset.get_num(&preset);
-    fluid_synth_program_select(synth, 0, synthId, bank, prog);
+    BankProgram* const programs = malloc(sizeof(BankProgram)*count);
+
+    if (programs == NULL)
+        goto cleanup_synth;
+
+    count = 0;
+    sfont->iteration_start(sfont);
+    for (; sfont->iteration_next(sfont, &preset) != 0;)
+    {
+        const BankProgram bp = {
+            preset.get_banknum(&preset),
+            preset.get_num(&preset)
+        };
+        programs[count++] = bp;
+    }
+
+    fluid_synth_program_select(synth, 0, synthId, programs[0].bank, programs[0].prog);
 
     // fluidsynth data
     data->settings = settings;
     data->synth    = synth;
     data->synthId  = synthId;
+    data->programs = programs;
 
     // lv2 data
-    data->midiEventURID = uridMap->map(uridMap->handle, LV2_MIDI__MidiEvent);
-    data->needsReset   = false;
+    data->currentProgram = 0;
+    data->midiEventURID  = uridMap->map(uridMap->handle, LV2_MIDI__MidiEvent);
+    data->needsReset     = false;
 
     return data;
 
@@ -162,8 +189,11 @@ static void lv2_connect_port(LV2_Handle instance, uint32_t port, void* dataLocat
 
     case kPortAudioOutL:
     case kPortAudioOutR:
-    case kPortProgram:
         data->buffers[port-1] = dataLocation;
+        break;
+
+    case kPortProgram:
+        data->controlProgram = dataLocation;
         break;
     }
 }
@@ -177,8 +207,8 @@ static void lv2_activate(LV2_Handle instance)
 
 static void lv2_run(LV2_Handle instance, uint32_t frames)
 {
+    // do nothing in pre-roll mode
     if (frames == 0)
-        // do nothing in pre-roll mode
         return;
 
     FluidSynthPluginData* const data = instance;
@@ -193,26 +223,14 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
         data->needsReset = false;
     }
 
-#if 0
-    // Check for updated parameters
-    float curValue;
+    const float currentProgram_f = *data->controlProgram;
+    const int   currentProgram_i = (int)(currentProgram_f+0.5f);
 
-    for (uint32_t i=0; i < fPorts.paramCount; ++i)
+    if (currentProgram_i != data->currentProgram && currentProgram_i >= 0)
     {
-        if (fPorts.paramsOut[i])
-            continue;
-
-        CARLA_SAFE_ASSERT_CONTINUE(fPorts.paramsPtr[i] != nullptr)
-
-        curValue = *fPorts.paramsPtr[i];
-
-        if (carla_isEqual(fPorts.paramsLast[i], curValue))
-            continue;
-
-        fPorts.paramsLast[i] = curValue;
-        fDescriptor->set_parameter_value(fHandle, i, curValue);
+        data->currentProgram = currentProgram_i;
+        fluid_synth_program_select(data->synth, 0, data->synthId, data->programs[currentProgram_i].bank, data->programs[currentProgram_i].prog);
     }
-#endif
 
     uint32_t frameOffset = 0;
 
@@ -293,6 +311,7 @@ static void lv2_cleanup(LV2_Handle instance)
 {
     FluidSynthPluginData* const data = instance;
 
+    free(data->programs);
     delete_fluid_synth(data->synth);
     delete_fluid_settings(data->settings);
     free(data);
@@ -302,7 +321,7 @@ LV2_SYMBOL_EXPORT
 const LV2_Descriptor* lv2_descriptor(uint32_t index)
 {
     static const LV2_Descriptor sDescriptor = {
-        .URI            = _2FS_URI,
+        .URI            = FLUIDPLUG_URI,
         .instantiate    = lv2_instantiate,
         .connect_port   = lv2_connect_port,
         .activate       = lv2_activate,

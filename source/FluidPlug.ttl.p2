@@ -1,0 +1,15 @@
+    ] ;
+
+    mod:brand "FluidSynth" ;
+    mod:label "xLABELx" ;
+
+    doap:name "xLABELx" ;
+    doap:license "LGPL" ;
+
+    doap:maintainer [
+        foaf:name "falkTX" ;
+        foaf:homepage <https://github.com/falkTX/FluidPlug> ;
+    ] ;
+
+    lv2:microVersion 1 ;
+    lv2:minorVersion 0 .

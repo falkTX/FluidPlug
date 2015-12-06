@@ -1,0 +1,624 @@
+@prefix atom: <http://lv2plug.in/ns/ext/atom#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix mod:  <http://moddevices.com/ns/mod#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidGM>
+    a lv2:InstrumentPlugin, lv2:Plugin ;
+
+    lv2:requiredFeature <http://lv2plug.in/ns/ext/urid#map> ;
+
+    lv2:port [
+        a lv2:InputPort, atom:AtomPort ;
+        atom:bufferType atom:Sequence ;
+        atom:supports <http://lv2plug.in/ns/ext/midi#MidiEvent> ;
+        lv2:designation lv2:control ;
+        lv2:index 0 ;
+        lv2:symbol "events" ;
+        lv2:name "Events" ;
+    ] , [
+        a lv2:OutputPort, lv2:AudioPort ;
+        lv2:index 1 ;
+        lv2:symbol "audio_out_l" ;
+        lv2:name "Audio Output Left" ;
+    ] , [
+        a lv2:OutputPort, lv2:AudioPort ;
+        lv2:index 2 ;
+        lv2:symbol "audio_out_r" ;
+        lv2:name "Audio Output Right" ;
+    ] , [
+        a lv2:InputPort, lv2:ControlPort ;
+        lv2:index 3 ;
+        lv2:symbol "program" ;
+        lv2:name "Program" ;
+        lv2:portProperty lv2:enumeration , lv2:integer ;
+        lv2:default 0 ;
+        lv2:minimum 0 ;
+        lv2:maximum 189 ;
+        lv2:scalePoint [
+        ] , [
+            rdfs:label "001:001 Yamaha Grand Piano" ;
+            rdf:value 1 ;
+        ] , [
+            rdfs:label "001:002 Bright Yamaha Grand" ;
+            rdf:value 2 ;
+        ] , [
+            rdfs:label "001:003 Electric Piano" ;
+            rdf:value 3 ;
+        ] , [
+            rdfs:label "001:004 Honky Tonk" ;
+            rdf:value 4 ;
+        ] , [
+            rdfs:label "001:005 Rhodes EP" ;
+            rdf:value 5 ;
+        ] , [
+            rdfs:label "001:006 Legend EP 2" ;
+            rdf:value 6 ;
+        ] , [
+            rdfs:label "001:007 Harpsichord" ;
+            rdf:value 7 ;
+        ] , [
+            rdfs:label "001:008 Clavinet" ;
+            rdf:value 8 ;
+        ] , [
+            rdfs:label "001:009 Celesta" ;
+            rdf:value 9 ;
+        ] , [
+            rdfs:label "001:010 Glockenspiel" ;
+            rdf:value 10 ;
+        ] , [
+            rdfs:label "001:011 Music Box" ;
+            rdf:value 11 ;
+        ] , [
+            rdfs:label "001:012 Vibraphone" ;
+            rdf:value 12 ;
+        ] , [
+            rdfs:label "001:013 Marimba" ;
+            rdf:value 13 ;
+        ] , [
+            rdfs:label "001:014 Xylophone" ;
+            rdf:value 14 ;
+        ] , [
+            rdfs:label "001:015 Tubular Bells" ;
+            rdf:value 15 ;
+        ] , [
+            rdfs:label "001:016 Dulcimer" ;
+            rdf:value 16 ;
+        ] , [
+            rdfs:label "001:017 DrawbarOrgan" ;
+            rdf:value 17 ;
+        ] , [
+            rdfs:label "001:018 Percussive Organ" ;
+            rdf:value 18 ;
+        ] , [
+            rdfs:label "001:019 Rock Organ" ;
+            rdf:value 19 ;
+        ] , [
+            rdfs:label "001:020 Church Organ" ;
+            rdf:value 20 ;
+        ] , [
+            rdfs:label "001:021 Reed Organ" ;
+            rdf:value 21 ;
+        ] , [
+            rdfs:label "001:022 Accordian" ;
+            rdf:value 22 ;
+        ] , [
+            rdfs:label "001:023 Harmonica" ;
+            rdf:value 23 ;
+        ] , [
+            rdfs:label "001:024 Bandoneon" ;
+            rdf:value 24 ;
+        ] , [
+            rdfs:label "001:025 Nylon String Guitar" ;
+            rdf:value 25 ;
+        ] , [
+            rdfs:label "001:026 Steel String Guitar" ;
+            rdf:value 26 ;
+        ] , [
+            rdfs:label "001:027 Jazz Guitar" ;
+            rdf:value 27 ;
+        ] , [
+            rdfs:label "001:028 Clean Guitar" ;
+            rdf:value 28 ;
+        ] , [
+            rdfs:label "001:029 Palm Muted Guitar" ;
+            rdf:value 29 ;
+        ] , [
+            rdfs:label "001:030 Overdrive Guitar" ;
+            rdf:value 30 ;
+        ] , [
+            rdfs:label "001:031 Distortion Guitar" ;
+            rdf:value 31 ;
+        ] , [
+            rdfs:label "001:032 Guitar Harmonics" ;
+            rdf:value 32 ;
+        ] , [
+            rdfs:label "001:033 Acoustic Bass" ;
+            rdf:value 33 ;
+        ] , [
+            rdfs:label "001:034 Fingered Bass" ;
+            rdf:value 34 ;
+        ] , [
+            rdfs:label "001:035 Picked Bass" ;
+            rdf:value 35 ;
+        ] , [
+            rdfs:label "001:036 Fretless Bass" ;
+            rdf:value 36 ;
+        ] , [
+            rdfs:label "001:037 Slap Bass" ;
+            rdf:value 37 ;
+        ] , [
+            rdfs:label "001:038 Pop Bass" ;
+            rdf:value 38 ;
+        ] , [
+            rdfs:label "001:039 Synth Bass 1" ;
+            rdf:value 39 ;
+        ] , [
+            rdfs:label "001:040 Synth Bass 2" ;
+            rdf:value 40 ;
+        ] , [
+            rdfs:label "001:041 Violin" ;
+            rdf:value 41 ;
+        ] , [
+            rdfs:label "001:042 Viola" ;
+            rdf:value 42 ;
+        ] , [
+            rdfs:label "001:043 Cello" ;
+            rdf:value 43 ;
+        ] , [
+            rdfs:label "001:044 Contrabass" ;
+            rdf:value 44 ;
+        ] , [
+            rdfs:label "001:045 Tremolo" ;
+            rdf:value 45 ;
+        ] , [
+            rdfs:label "001:046 Pizzicato Section" ;
+            rdf:value 46 ;
+        ] , [
+            rdfs:label "001:047 Harp" ;
+            rdf:value 47 ;
+        ] , [
+            rdfs:label "001:048 Timpani" ;
+            rdf:value 48 ;
+        ] , [
+            rdfs:label "001:049 Strings" ;
+            rdf:value 49 ;
+        ] , [
+            rdfs:label "001:050 Slow Strings" ;
+            rdf:value 50 ;
+        ] , [
+            rdfs:label "001:051 Synth Strings 1" ;
+            rdf:value 51 ;
+        ] , [
+            rdfs:label "001:052 Synth Strings 2" ;
+            rdf:value 52 ;
+        ] , [
+            rdfs:label "001:053 Ahh Choir" ;
+            rdf:value 53 ;
+        ] , [
+            rdfs:label "001:054 Ohh Voices" ;
+            rdf:value 54 ;
+        ] , [
+            rdfs:label "001:055 Synth Voice" ;
+            rdf:value 55 ;
+        ] , [
+            rdfs:label "001:056 Orchestra Hit" ;
+            rdf:value 56 ;
+        ] , [
+            rdfs:label "001:057 Trumpet" ;
+            rdf:value 57 ;
+        ] , [
+            rdfs:label "001:058 Trombone" ;
+            rdf:value 58 ;
+        ] , [
+            rdfs:label "001:059 Tuba" ;
+            rdf:value 59 ;
+        ] , [
+            rdfs:label "001:060 Muted Trumpet" ;
+            rdf:value 60 ;
+        ] , [
+            rdfs:label "001:061 French Horns" ;
+            rdf:value 61 ;
+        ] , [
+            rdfs:label "001:062 Brass Section" ;
+            rdf:value 62 ;
+        ] , [
+            rdfs:label "001:063 Synth Brass 1" ;
+            rdf:value 63 ;
+        ] , [
+            rdfs:label "001:064 Synth Brass 2" ;
+            rdf:value 64 ;
+        ] , [
+            rdfs:label "001:065 Soprano Sax" ;
+            rdf:value 65 ;
+        ] , [
+            rdfs:label "001:066 Alto Sax" ;
+            rdf:value 66 ;
+        ] , [
+            rdfs:label "001:067 Tenor Sax" ;
+            rdf:value 67 ;
+        ] , [
+            rdfs:label "001:068 Baritone Sax" ;
+            rdf:value 68 ;
+        ] , [
+            rdfs:label "001:069 Oboe" ;
+            rdf:value 69 ;
+        ] , [
+            rdfs:label "001:070 English Horn" ;
+            rdf:value 70 ;
+        ] , [
+            rdfs:label "001:071 Bassoon" ;
+            rdf:value 71 ;
+        ] , [
+            rdfs:label "001:072 Clarinet" ;
+            rdf:value 72 ;
+        ] , [
+            rdfs:label "001:073 Piccolo" ;
+            rdf:value 73 ;
+        ] , [
+            rdfs:label "001:074 Flute" ;
+            rdf:value 74 ;
+        ] , [
+            rdfs:label "001:075 Recorder" ;
+            rdf:value 75 ;
+        ] , [
+            rdfs:label "001:076 Pan Flute" ;
+            rdf:value 76 ;
+        ] , [
+            rdfs:label "001:077 Bottle Chiff" ;
+            rdf:value 77 ;
+        ] , [
+            rdfs:label "001:078 Shakuhachi" ;
+            rdf:value 78 ;
+        ] , [
+            rdfs:label "001:079 Whistle" ;
+            rdf:value 79 ;
+        ] , [
+            rdfs:label "001:080 Ocarina" ;
+            rdf:value 80 ;
+        ] , [
+            rdfs:label "001:081 Square Lead" ;
+            rdf:value 81 ;
+        ] , [
+            rdfs:label "001:082 Saw Wave" ;
+            rdf:value 82 ;
+        ] , [
+            rdfs:label "001:083 Calliope Lead" ;
+            rdf:value 83 ;
+        ] , [
+            rdfs:label "001:084 Chiffer Lead" ;
+            rdf:value 84 ;
+        ] , [
+            rdfs:label "001:085 Charang" ;
+            rdf:value 85 ;
+        ] , [
+            rdfs:label "001:086 Solo Vox" ;
+            rdf:value 86 ;
+        ] , [
+            rdfs:label "001:087 Fifth Sawtooth Wave" ;
+            rdf:value 87 ;
+        ] , [
+            rdfs:label "001:088 Bass & Lead" ;
+            rdf:value 88 ;
+        ] , [
+            rdfs:label "001:089 Fantasia" ;
+            rdf:value 89 ;
+        ] , [
+            rdfs:label "001:090 Warm Pad" ;
+            rdf:value 90 ;
+        ] , [
+            rdfs:label "001:091 Polysynth" ;
+            rdf:value 91 ;
+        ] , [
+            rdfs:label "001:092 Space Voice" ;
+            rdf:value 92 ;
+        ] , [
+            rdfs:label "001:093 Bowed Glass" ;
+            rdf:value 93 ;
+        ] , [
+            rdfs:label "001:094 Metal Pad" ;
+            rdf:value 94 ;
+        ] , [
+            rdfs:label "001:095 Halo Pad" ;
+            rdf:value 95 ;
+        ] , [
+            rdfs:label "001:096 Sweep Pad" ;
+            rdf:value 96 ;
+        ] , [
+            rdfs:label "001:097 Ice Rain" ;
+            rdf:value 97 ;
+        ] , [
+            rdfs:label "001:098 Soundtrack" ;
+            rdf:value 98 ;
+        ] , [
+            rdfs:label "001:099 Crystal" ;
+            rdf:value 99 ;
+        ] , [
+            rdfs:label "001:100 Atmosphere" ;
+            rdf:value 100 ;
+        ] , [
+            rdfs:label "001:101 Brightness" ;
+            rdf:value 101 ;
+        ] , [
+            rdfs:label "001:102 Goblin" ;
+            rdf:value 102 ;
+        ] , [
+            rdfs:label "001:103 Echo Drops" ;
+            rdf:value 103 ;
+        ] , [
+            rdfs:label "001:104 Star Theme" ;
+            rdf:value 104 ;
+        ] , [
+            rdfs:label "001:105 Sitar" ;
+            rdf:value 105 ;
+        ] , [
+            rdfs:label "001:106 Banjo" ;
+            rdf:value 106 ;
+        ] , [
+            rdfs:label "001:107 Shamisen" ;
+            rdf:value 107 ;
+        ] , [
+            rdfs:label "001:108 Koto" ;
+            rdf:value 108 ;
+        ] , [
+            rdfs:label "001:109 Kalimba" ;
+            rdf:value 109 ;
+        ] , [
+            rdfs:label "001:110 BagPipe" ;
+            rdf:value 110 ;
+        ] , [
+            rdfs:label "001:111 Fiddle" ;
+            rdf:value 111 ;
+        ] , [
+            rdfs:label "001:112 Shenai" ;
+            rdf:value 112 ;
+        ] , [
+            rdfs:label "001:113 Tinker Bell" ;
+            rdf:value 113 ;
+        ] , [
+            rdfs:label "001:114 Agogo" ;
+            rdf:value 114 ;
+        ] , [
+            rdfs:label "001:115 Steel Drums" ;
+            rdf:value 115 ;
+        ] , [
+            rdfs:label "001:116 Woodblock" ;
+            rdf:value 116 ;
+        ] , [
+            rdfs:label "001:117 Taiko Drum" ;
+            rdf:value 117 ;
+        ] , [
+            rdfs:label "001:118 Melodic Tom" ;
+            rdf:value 118 ;
+        ] , [
+            rdfs:label "001:119 Synth Drum" ;
+            rdf:value 119 ;
+        ] , [
+            rdfs:label "001:120 Reverse Cymbal" ;
+            rdf:value 120 ;
+        ] , [
+            rdfs:label "001:121 Fret Noise" ;
+            rdf:value 121 ;
+        ] , [
+            rdfs:label "001:122 Breath Noise" ;
+            rdf:value 122 ;
+        ] , [
+            rdfs:label "001:123 Sea Shore" ;
+            rdf:value 123 ;
+        ] , [
+            rdfs:label "001:124 Bird Tweet" ;
+            rdf:value 124 ;
+        ] , [
+            rdfs:label "001:125 Telephone" ;
+            rdf:value 125 ;
+        ] , [
+            rdfs:label "001:126 Helicopter" ;
+            rdf:value 126 ;
+        ] , [
+            rdfs:label "001:127 Applause" ;
+            rdf:value 127 ;
+        ] , [
+            rdfs:label "001:128 Gun Shot" ;
+            rdf:value 128 ;
+        ] , [
+            rdfs:label "009:129 Detuned EP 1" ;
+            rdf:value 129 ;
+        ] , [
+            rdfs:label "009:130 Detuned EP 2" ;
+            rdf:value 130 ;
+        ] , [
+            rdfs:label "009:131 Coupled Harpsichord" ;
+            rdf:value 131 ;
+        ] , [
+            rdfs:label "009:132 Church Bell" ;
+            rdf:value 132 ;
+        ] , [
+            rdfs:label "009:133 Detuned Organ 1" ;
+            rdf:value 133 ;
+        ] , [
+            rdfs:label "009:134 Detuned Organ 2" ;
+            rdf:value 134 ;
+        ] , [
+            rdfs:label "009:135 Church Organ 2" ;
+            rdf:value 135 ;
+        ] , [
+            rdfs:label "009:136 Italian Accordion" ;
+            rdf:value 136 ;
+        ] , [
+            rdfs:label "009:137 Ukulele" ;
+            rdf:value 137 ;
+        ] , [
+            rdfs:label "009:138 12 String Guitar" ;
+            rdf:value 138 ;
+        ] , [
+            rdfs:label "009:139 Hawaiian Guitar" ;
+            rdf:value 139 ;
+        ] , [
+            rdfs:label "009:140 Funk Guitar" ;
+            rdf:value 140 ;
+        ] , [
+            rdfs:label "009:141 Feedback Guitar" ;
+            rdf:value 141 ;
+        ] , [
+            rdfs:label "009:142 Guitar Feedback" ;
+            rdf:value 142 ;
+        ] , [
+            rdfs:label "009:143 Synth Bass 3" ;
+            rdf:value 143 ;
+        ] , [
+            rdfs:label "009:144 Synth Bass 4" ;
+            rdf:value 144 ;
+        ] , [
+            rdfs:label "009:145 Slow Violin" ;
+            rdf:value 145 ;
+        ] , [
+            rdfs:label "009:146 Orchestral Pad" ;
+            rdf:value 146 ;
+        ] , [
+            rdfs:label "009:147 Synth Strings 3" ;
+            rdf:value 147 ;
+        ] , [
+            rdfs:label "009:148 Brass 2" ;
+            rdf:value 148 ;
+        ] , [
+            rdfs:label "009:149 Synth Brass 3" ;
+            rdf:value 149 ;
+        ] , [
+            rdfs:label "009:150 Synth Brass 4" ;
+            rdf:value 150 ;
+        ] , [
+            rdfs:label "009:151 Sine Wave" ;
+            rdf:value 151 ;
+        ] , [
+            rdfs:label "009:152 Taisho Koto" ;
+            rdf:value 152 ;
+        ] , [
+            rdfs:label "009:153 Castanets" ;
+            rdf:value 153 ;
+        ] , [
+            rdfs:label "009:154 Concert Bass Drum" ;
+            rdf:value 154 ;
+        ] , [
+            rdfs:label "009:155 Melo Tom 2" ;
+            rdf:value 155 ;
+        ] , [
+            rdfs:label "009:156 808 Tom" ;
+            rdf:value 156 ;
+        ] , [
+            rdfs:label "010:157 Burst Noise" ;
+            rdf:value 157 ;
+        ] , [
+            rdfs:label "017:158 Mandolin" ;
+            rdf:value 158 ;
+        ] , [
+            rdfs:label "129:159 Standard" ;
+            rdf:value 159 ;
+        ] , [
+            rdfs:label "129:160 Standard 1" ;
+            rdf:value 160 ;
+        ] , [
+            rdfs:label "129:161 Standard 2" ;
+            rdf:value 161 ;
+        ] , [
+            rdfs:label "129:162 Standard 3" ;
+            rdf:value 162 ;
+        ] , [
+            rdfs:label "129:163 Standard 4" ;
+            rdf:value 163 ;
+        ] , [
+            rdfs:label "129:164 Standard 5" ;
+            rdf:value 164 ;
+        ] , [
+            rdfs:label "129:165 Standard 6" ;
+            rdf:value 165 ;
+        ] , [
+            rdfs:label "129:166 Standard 7" ;
+            rdf:value 166 ;
+        ] , [
+            rdfs:label "129:167 Room" ;
+            rdf:value 167 ;
+        ] , [
+            rdfs:label "129:168 Room 1" ;
+            rdf:value 168 ;
+        ] , [
+            rdfs:label "129:169 Room 2" ;
+            rdf:value 169 ;
+        ] , [
+            rdfs:label "129:170 Room 3" ;
+            rdf:value 170 ;
+        ] , [
+            rdfs:label "129:171 Room 4" ;
+            rdf:value 171 ;
+        ] , [
+            rdfs:label "129:172 Room 5" ;
+            rdf:value 172 ;
+        ] , [
+            rdfs:label "129:173 Room 6" ;
+            rdf:value 173 ;
+        ] , [
+            rdfs:label "129:174 Room 7" ;
+            rdf:value 174 ;
+        ] , [
+            rdfs:label "129:175 Power" ;
+            rdf:value 175 ;
+        ] , [
+            rdfs:label "129:176 Power 1" ;
+            rdf:value 176 ;
+        ] , [
+            rdfs:label "129:177 Power 2" ;
+            rdf:value 177 ;
+        ] , [
+            rdfs:label "129:178 Power 3" ;
+            rdf:value 178 ;
+        ] , [
+            rdfs:label "129:179 Electronic" ;
+            rdf:value 179 ;
+        ] , [
+            rdfs:label "129:180 TR-808" ;
+            rdf:value 180 ;
+        ] , [
+            rdfs:label "129:181 Jazz" ;
+            rdf:value 181 ;
+        ] , [
+            rdfs:label "129:182 Jazz 1" ;
+            rdf:value 182 ;
+        ] , [
+            rdfs:label "129:183 Jazz 2" ;
+            rdf:value 183 ;
+        ] , [
+            rdfs:label "129:184 Jazz 3" ;
+            rdf:value 184 ;
+        ] , [
+            rdfs:label "129:185 Jazz 4" ;
+            rdf:value 185 ;
+        ] , [
+            rdfs:label "129:186 Brush" ;
+            rdf:value 186 ;
+        ] , [
+            rdfs:label "129:187 Brush 1" ;
+            rdf:value 187 ;
+        ] , [
+            rdfs:label "129:188 Brush 2" ;
+            rdf:value 188 ;
+        ] , [
+            rdfs:label "129:189 Orchestra Kit" ;
+            rdf:value 189 ;
+        ] ;
+    ] ;
+
+    mod:brand "FluidSynth" ;
+    mod:label "FluidGM" ;
+
+    doap:name "FluidGM" ;
+    doap:license "LGPL" ;
+
+    doap:maintainer [
+        foaf:name "falkTX" ;
+        foaf:homepage <https://github.com/falkTX/FluidPlug> ;
+    ] ;
+
+    lv2:microVersion 1 ;
+    lv2:minorVersion 0 .

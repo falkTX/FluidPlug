@@ -1,6 +1,9 @@
+*.7z
 *.a
 *.o
 *.dll
 *.dylib
 *.so
 *.sf2
+*.tar
+exporter
