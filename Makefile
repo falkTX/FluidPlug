@@ -70,7 +70,7 @@ FluidGM.lv2/FluidPlug.sf2:
 		7z x fluidr3.tar && \
 		mv fluidr3/* . && \
 		mv fluidr3gm.sf2 FluidPlug.sf2 && \
-		mv readme README &&
+		mv readme README && \
 		rmdir fluidr3)
 
 # ---------------------------------------------------------------------------------------------------------------------
