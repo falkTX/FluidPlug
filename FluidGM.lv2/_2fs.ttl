@@ -1,0 +1,42 @@
+@prefix atom: <http://lv2plug.in/ns/ext/atom#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://kxstudio.sf.net/plugins/2fs_FluidGM>
+    a lv2:InstrumentPlugin, lv2:Plugin ;
+
+    lv2:requiredFeature <http://lv2plug.in/ns/ext/urid#map> ;
+
+    lv2:port [
+        a lv2:InputPort, atom:AtomPort ;
+        atom:bufferType atom:Sequence ;
+        atom:supports <http://lv2plug.in/ns/ext/midi#MidiEvent> ;
+        lv2:designation lv2:control ;
+        lv2:index 0 ;
+        lv2:symbol "events" ;
+        lv2:name "Events" ;
+    ] , [
+        a lv2:OutputPort, lv2:AudioPort ;
+        lv2:index 1 ;
+        lv2:symbol "audio_out_l" ;
+        lv2:name "Audio Output Left" ;
+    ] , [
+        a lv2:OutputPort, lv2:AudioPort ;
+        lv2:index 2 ;
+        lv2:symbol "audio_out_r" ;
+        lv2:name "Audio Output Right" ;
+    ] , [
+        a lv2:InputPort, lv2:ControlPort ;
+        lv2:index 3 ;
+        lv2:symbol "program" ;
+        lv2:name "Program" ;
+        lv2:default 0 ;
+        lv2:minimum 0 ;
+        lv2:maximum 1 ;
+        lv2:portProperty lv2:integer ;
+    ] ;
+
+    doap:name "FluidGM" ;
+    doap:maintainer [ foaf:name "falkTX" ] .
