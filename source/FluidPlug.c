@@ -221,11 +221,15 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
 
     if (data->needsReset)
     {
+        /*
         for (int i=0; i<16; ++i)
         {
             fluid_synth_all_notes_off(data->synth, i);
             fluid_synth_all_sounds_off(data->synth, i);
         }
+        */
+        fluid_synth_all_notes_off(data->synth, 0);
+        fluid_synth_all_sounds_off(data->synth, 0);
         data->needsReset = false;
     }
 
@@ -275,7 +279,7 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
 
         frameOffset = event->time.frames;
 
-        const uint8_t channel = mdata[0] & 0x0F;
+        const uint8_t channel = 0; //mdata[0] & 0x0F;
 
         switch (status)
         {
