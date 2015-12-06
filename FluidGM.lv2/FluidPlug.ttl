@@ -627,5 +627,7 @@
         foaf:homepage <https://github.com/falkTX/FluidPlug> ;
     ] ;
 
+    rdfs:comment "Fluid GM soundfont was constructed in part from edited/cleaned/remixed/programmed samples found in the public domain and recordings made by Frank Wen." ;
+
     lv2:microVersion 1 ;
     lv2:minorVersion 0 .

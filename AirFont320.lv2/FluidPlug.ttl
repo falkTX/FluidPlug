@@ -1035,5 +1035,7 @@
         foaf:homepage <https://github.com/falkTX/FluidPlug> ;
     ] ;
 
+    rdfs:comment "AirFont 320 made in 2005 by Milton Paredes." ;
+
     lv2:microVersion 1 ;
     lv2:minorVersion 0 .

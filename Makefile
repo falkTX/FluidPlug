@@ -34,6 +34,10 @@ install:
 		FluidGM.lv2/*.ttl \
 		$(DESTDIR)$(PREFIX)/lib/lv2/FluidGM.lv2
 
+	# recursive copy
+	cp -r AirFont320.lv2/modgui $(DESTDIR)$(PREFIX)/lib/lv2/AirFont320.lv2
+	cp -r FluidGM.lv2/modgui    $(DESTDIR)$(PREFIX)/lib/lv2/FluidGM.lv2
+
 # ---------------------------------------------------------------------------------------------------------------------
 
 AirFont320 = \
