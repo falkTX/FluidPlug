@@ -80,7 +80,7 @@ FluidGM.lv2/FluidPlug.sf2:
 
 %.lv2/FluidPlug.ttl: %.lv2/FluidPlug.sf2 exporter
 	sed "s/xLABELx/$*/" source/FluidPlug.ttl.p1 > $*.lv2/FluidPlug.ttl
-	(cd $*.lv2 && ../exporter >> FluidPlug.ttl)
+	cd $*.lv2 && ../exporter >> FluidPlug.ttl
 	sed "s/xLABELx/$*/" source/FluidPlug.ttl.p2 >> $*.lv2/FluidPlug.ttl
 
 %.lv2/manifest.ttl:
