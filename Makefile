@@ -55,6 +55,10 @@ FluidGM = \
 AirFont320: $(AirFont320)
 FluidGM:    $(FluidGM)
 
+download: \
+	AirFont320.lv2/FluidPlug.sf2 \
+	FluidGM.lv2/FluidPlug.sf2
+
 # ---------------------------------------------------------------------------------------------------------------------
 
 AirFont320.lv2/FluidPlug.sf2:
