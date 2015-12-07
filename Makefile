@@ -18,6 +18,12 @@ build: AirFont320 FluidGM
 clean:
 	rm -f *.lv2/*.so exporter
 
+distclean: clean
+	rm -f *.lv2/README
+	rm -f *.lv2/*.sf2
+	rm -f *.lv2/*.tar
+	rm -f *.lv2/*.tar.7z
+
 install:
 	install -d $(DESTDIR)$(PREFIX)/lib/lv2/AirFont320.lv2
 	install -d $(DESTDIR)$(PREFIX)/lib/lv2/FluidGM.lv2
