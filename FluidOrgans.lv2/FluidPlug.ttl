@@ -1,0 +1,88 @@
+@prefix atom: <http://lv2plug.in/ns/ext/atom#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix mod:  <http://moddevices.com/ns/mod#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidOrgans>
+    a lv2:InstrumentPlugin, lv2:Plugin ;
+
+    lv2:requiredFeature <http://lv2plug.in/ns/ext/urid#map> ;
+
+    lv2:port [
+        a lv2:InputPort, atom:AtomPort ;
+        atom:bufferType atom:Sequence ;
+        atom:supports <http://lv2plug.in/ns/ext/midi#MidiEvent> ;
+        lv2:designation lv2:control ;
+        lv2:index 0 ;
+        lv2:symbol "events" ;
+        lv2:name "Events" ;
+    ] , [
+        a lv2:OutputPort, lv2:AudioPort ;
+        lv2:index 1 ;
+        lv2:symbol "audio_out_l" ;
+        lv2:name "Audio Output Left" ;
+    ] , [
+        a lv2:OutputPort, lv2:AudioPort ;
+        lv2:index 2 ;
+        lv2:symbol "audio_out_r" ;
+        lv2:name "Audio Output Right" ;
+    ] , [
+        a lv2:InputPort, lv2:ControlPort ;
+        lv2:index 3 ;
+        lv2:symbol "gain" ;
+        lv2:name "Gain" ;
+        lv2:default 1.0 ;
+        lv2:minimum 0.0 ;
+        lv2:maximum 2.0 ;
+    ] , [
+        a lv2:InputPort, lv2:ControlPort ;
+        lv2:index 4 ;
+        lv2:symbol "program" ;
+        lv2:name "Program" ;
+        lv2:portProperty lv2:enumeration , lv2:integer ;
+        lv2:default 0 ;
+        lv2:minimum 0 ;
+        lv2:maximum 8 ;
+        lv2:scalePoint [
+            rdfs:label "DrawbarOrgan" ;
+            rdf:value 0 ;
+        ] , [
+            rdfs:label "Percussive Organ" ;
+            rdf:value 1 ;
+        ] , [
+            rdfs:label "Rock Organ" ;
+            rdf:value 2 ;
+        ] , [
+            rdfs:label "Church Organ" ;
+            rdf:value 3 ;
+        ] , [
+            rdfs:label "Reed Organ" ;
+            rdf:value 4 ;
+        ] , [
+            rdfs:label "Accordian" ;
+            rdf:value 5 ;
+        ] , [
+            rdfs:label "Harmonica" ;
+            rdf:value 6 ;
+        ] , [
+            rdfs:label "Bandoneon" ;
+            rdf:value 7 ;
+        ] ;
+    ] ;
+
+    mod:brand "FluidGM" ;
+    mod:label "Fluid Organs" ;
+
+    doap:name "Fluid Organs" ;
+    doap:license "LGPL" ;
+
+    doap:maintainer [
+        foaf:name "falkTX" ;
+        foaf:homepage <https://github.com/falkTX/FluidPlug> ;
+    ] ;
+
+    lv2:microVersion 1 ;
+    lv2:minorVersion 0 .
