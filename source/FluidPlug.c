@@ -1,6 +1,6 @@
 /*
  * FluidPlug - SoundFonts as LV2 plugins via FluidSynth
- * Copyright (C) 2015 Filipe Coelho <falktx@falktx.com>
+ * Copyright (C) 2015-2016 Filipe Coelho <falktx@falktx.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public License
@@ -124,11 +124,11 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     if (sfont == NULL)
         goto cleanup_synth;
 
-    size_t count = 0;
+    size_t count;
     fluid_preset_t preset;
 
     sfont->iteration_start(sfont);
-    for (; sfont->iteration_next(sfont, &preset) != 0;)
+    for (count = 0; sfont->iteration_next(sfont, &preset) != 0;)
         ++count;
 
     if (count == 0)
@@ -139,9 +139,8 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     if (programs == NULL)
         goto cleanup_synth;
 
-    count = 0;
     sfont->iteration_start(sfont);
-    for (; sfont->iteration_next(sfont, &preset) != 0;)
+    for (count = 0; sfont->iteration_next(sfont, &preset) != 0;)
     {
         const BankProgram bp = {
             preset.get_banknum(&preset),
@@ -270,6 +269,7 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
         case 0xB0:
             if (mdata[1] != 0 && mdata[1] != 0x20)
                 break;
+            // skip bank changes
         default:
             continue;
         }
@@ -297,8 +297,6 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
         case 0xB0: {
             const uint8_t control = mdata[1];
             const uint8_t value   = mdata[2];
-            if (control == 0 || control == 0x20)
-                continue;
             fluid_synth_cc(data->synth, channel, control, value);
         } break;
 

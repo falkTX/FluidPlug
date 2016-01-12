@@ -1,6 +1,6 @@
 /*
  * FluidPlug - SoundFonts as LV2 plugins via FluidSynth
- * Copyright (C) 2015 Filipe Coelho <falktx@falktx.com>
+ * Copyright (C) 2015-2016 Filipe Coelho <falktx@falktx.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public License
@@ -67,6 +67,7 @@ int main()
 
         printf("            rdfs:label \"");
 
+#if 1
         if (bank == -2)
             printf("%03i:", preset.get_banknum(&preset)+1);
 
@@ -78,6 +79,9 @@ int main()
             printf("%i", index+1);
 
         printf(" %s\" ;\n", name);
+#else
+        printf("%s\" ;\n", name);
+#endif
         printf("            rdf:value %i ;\n", index);
     }
 
