@@ -47,10 +47,10 @@
         lv2:minimum 0 ;
         lv2:maximum 8 ;
         lv2:scalePoint [
-            rdfs:label "Yamaha Grand Piano" ;
+            rdfs:label "Grand Piano" ;
             rdf:value 0 ;
         ] , [
-            rdfs:label "Bright Yamaha Grand" ;
+            rdfs:label "Bright Grand" ;
             rdf:value 1 ;
         ] , [
             rdfs:label "Electric Piano" ;

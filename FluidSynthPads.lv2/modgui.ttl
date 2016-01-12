@@ -1,0 +1,26 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidSynthPads>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-fluid-synthpads.html> ;
+        modgui:stylesheet <modgui/stylesheet-fluid-synthpads.css> ;
+        modgui:screenshot <modgui/screenshot-fluid-synthpads.png> ;
+        modgui:thumbnail <modgui/thumbnail-fluid-synthpads.png> ;
+        modgui:brand "FluidGM" ;
+        modgui:label "Synth Pads" ;
+        modgui:model "boxy" ;
+        modgui:panel "1-select-1-knob" ;
+        modgui:color "brown" ;
+        modgui:knob "aluminium" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "program" ;
+            lv2:name "Program" ;
+        ] , [
+            lv2:index 1 ;
+            lv2:symbol "gain" ;
+            lv2:name "Gain" ;
+        ] ;
+    ] .

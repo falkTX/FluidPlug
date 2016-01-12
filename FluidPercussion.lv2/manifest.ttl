@@ -4,4 +4,4 @@
 <http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidPercussion>
     a lv2:Plugin ;
     lv2:binary <FluidPlug.so> ;
-    rdfs:seeAlso <FluidPlug.ttl> .
+    rdfs:seeAlso <FluidPlug.ttl> , <modgui.ttl> .

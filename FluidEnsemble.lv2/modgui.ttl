@@ -1,0 +1,26 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidEnsemble>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-fluid-ensemble.html> ;
+        modgui:stylesheet <modgui/stylesheet-fluid-ensemble.css> ;
+        modgui:screenshot <modgui/screenshot-fluid-ensemble.png> ;
+        modgui:thumbnail <modgui/thumbnail-fluid-ensemble.png> ;
+        modgui:brand "FluidGM" ;
+        modgui:label "Ensemble" ;
+        modgui:model "boxy" ;
+        modgui:panel "1-select-1-knob" ;
+        modgui:color "purple" ;
+        modgui:knob "steel" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "program" ;
+            lv2:name "Program" ;
+        ] , [
+            lv2:index 1 ;
+            lv2:symbol "gain" ;
+            lv2:name "Gain" ;
+        ] ;
+    ] .

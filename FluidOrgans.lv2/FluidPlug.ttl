@@ -47,7 +47,7 @@
         lv2:minimum 0 ;
         lv2:maximum 8 ;
         lv2:scalePoint [
-            rdfs:label "DrawbarOrgan" ;
+            rdfs:label "Drawbar Organ" ;
             rdf:value 0 ;
         ] , [
             rdfs:label "Percussive Organ" ;

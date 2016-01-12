@@ -1,0 +1,26 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidSynthFX>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-fluid-synthfx.html> ;
+        modgui:stylesheet <modgui/stylesheet-fluid-synthfx.css> ;
+        modgui:screenshot <modgui/screenshot-fluid-synthfx.png> ;
+        modgui:thumbnail <modgui/thumbnail-fluid-synthfx.png> ;
+        modgui:brand "FluidGM" ;
+        modgui:label "Synth FX" ;
+        modgui:model "boxy" ;
+        modgui:panel "1-select-1-knob" ;
+        modgui:color "slime" ;
+        modgui:knob "steel" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "program" ;
+            lv2:name "Program" ;
+        ] , [
+            lv2:index 1 ;
+            lv2:symbol "gain" ;
+            lv2:name "Gain" ;
+        ] ;
+    ] .
