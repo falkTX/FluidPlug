@@ -365,7 +365,7 @@ FluidGM.lv2/FluidPlug.sf2:
 FluidBass.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidBass.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_bass.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_bass.sf2.tar.7z && \
 		7z x fluidr3gm_bass.sf2.tar.7z && \
 		7z x fluidr3gm_bass.sf2.tar && \
 		mv fluidr3gm_bass.sf2 FluidPlug.sf2)
@@ -373,7 +373,7 @@ FluidBass.lv2/FluidPlug.sf2:
 FluidBrass.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidBrass.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_brass.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_brass.sf2.tar.7z && \
 		7z x fluidr3gm_brass.sf2.tar.7z && \
 		7z x fluidr3gm_brass.sf2.tar && \
 		mv fluidr3gm_brass.sf2 FluidPlug.sf2)
@@ -381,7 +381,7 @@ FluidBrass.lv2/FluidPlug.sf2:
 FluidChromPerc.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidChromPerc.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_chromaticpercussion.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_chromaticpercussion.sf2.tar.7z && \
 		7z x fluidr3gm_chromaticpercussion.sf2.tar.7z && \
 		7z x fluidr3gm_chromaticpercussion.sf2.tar && \
 		mv fluidr3gm_chromaticpercussion.sf2 FluidPlug.sf2)
@@ -389,7 +389,7 @@ FluidChromPerc.lv2/FluidPlug.sf2:
 FluidDrums.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidDrums.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_drums.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_drums.sf2.tar.7z && \
 		7z x fluidr3gm_drums.sf2.tar.7z && \
 		7z x fluidr3gm_drums.sf2.tar && \
 		mv fluidr3gm_drums.sf2 FluidPlug.sf2)
@@ -397,7 +397,7 @@ FluidDrums.lv2/FluidPlug.sf2:
 FluidEnsemble.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidEnsemble.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_ensemble.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_ensemble.sf2.tar.7z && \
 		7z x fluidr3gm_ensemble.sf2.tar.7z && \
 		7z x fluidr3gm_ensemble.sf2.tar && \
 		mv fluidr3gm_ensemble.sf2 FluidPlug.sf2)
@@ -405,7 +405,7 @@ FluidEnsemble.lv2/FluidPlug.sf2:
 FluidEthnic.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidEthnic.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_ethnic.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_ethnic.sf2.tar.7z && \
 		7z x fluidr3gm_ethnic.sf2.tar.7z && \
 		7z x fluidr3gm_ethnic.sf2.tar && \
 		mv fluidr3gm_ethnic.sf2 FluidPlug.sf2)
@@ -413,7 +413,7 @@ FluidEthnic.lv2/FluidPlug.sf2:
 FluidGuitars.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidGuitars.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_guitar.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_guitar.sf2.tar.7z && \
 		7z x fluidr3gm_guitar.sf2.tar.7z && \
 		7z x fluidr3gm_guitar.sf2.tar && \
 		mv fluidr3gm_guitar.sf2 FluidPlug.sf2)
@@ -421,7 +421,7 @@ FluidGuitars.lv2/FluidPlug.sf2:
 FluidOrgans.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidOrgans.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_organ.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_organ.sf2.tar.7z && \
 		7z x fluidr3gm_organ.sf2.tar.7z && \
 		7z x fluidr3gm_organ.sf2.tar && \
 		mv fluidr3gm_organ.sf2 FluidPlug.sf2)
@@ -429,7 +429,7 @@ FluidOrgans.lv2/FluidPlug.sf2:
 FluidPercussion.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidPercussion.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_percussive.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_percussive.sf2.tar.7z && \
 		7z x fluidr3gm_percussive.sf2.tar.7z && \
 		7z x fluidr3gm_percussive.sf2.tar && \
 		mv fluidr3gm_percussive.sf2 FluidPlug.sf2)
@@ -437,7 +437,7 @@ FluidPercussion.lv2/FluidPlug.sf2:
 FluidPianos.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidPianos.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_piano.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_piano.sf2.tar.7z && \
 		7z x fluidr3gm_piano.sf2.tar.7z && \
 		7z x fluidr3gm_piano.sf2.tar && \
 		mv fluidr3gm_piano.sf2 FluidPlug.sf2)
@@ -445,7 +445,7 @@ FluidPianos.lv2/FluidPlug.sf2:
 FluidPipes.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidPipes.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_pipe.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_pipe.sf2.tar.7z && \
 		7z x fluidr3gm_pipe.sf2.tar.7z && \
 		7z x fluidr3gm_pipe.sf2.tar && \
 		mv fluidr3gm_pipe.sf2 FluidPlug.sf2)
@@ -453,7 +453,7 @@ FluidPipes.lv2/FluidPlug.sf2:
 FluidReeds.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidReeds.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_reed.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_reed.sf2.tar.7z && \
 		7z x fluidr3gm_reed.sf2.tar.7z && \
 		7z x fluidr3gm_reed.sf2.tar && \
 		mv fluidr3gm_reed.sf2 FluidPlug.sf2)
@@ -461,7 +461,7 @@ FluidReeds.lv2/FluidPlug.sf2:
 FluidSoundFX.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidSoundFX.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_soundeffects.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_soundeffects.sf2.tar.7z && \
 		7z x fluidr3gm_soundeffects.sf2.tar.7z && \
 		7z x fluidr3gm_soundeffects.sf2.tar && \
 		mv fluidr3gm_soundeffects.sf2 FluidPlug.sf2)
@@ -469,7 +469,7 @@ FluidSoundFX.lv2/FluidPlug.sf2:
 FluidStrings.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidStrings.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_strings.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_strings.sf2.tar.7z && \
 		7z x fluidr3gm_strings.sf2.tar.7z && \
 		7z x fluidr3gm_strings.sf2.tar && \
 		mv fluidr3gm_strings.sf2 FluidPlug.sf2)
@@ -477,7 +477,7 @@ FluidStrings.lv2/FluidPlug.sf2:
 FluidSynthFX.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidSynthFX.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_syntheffects.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_syntheffects.sf2.tar.7z && \
 		7z x fluidr3gm_syntheffects.sf2.tar.7z && \
 		7z x fluidr3gm_syntheffects.sf2.tar && \
 		mv fluidr3gm_syntheffects.sf2 FluidPlug.sf2)
@@ -485,7 +485,7 @@ FluidSynthFX.lv2/FluidPlug.sf2:
 FluidSynthLeads.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidSynthLeads.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_synthlead.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_synthlead.sf2.tar.7z && \
 		7z x fluidr3gm_synthlead.sf2.tar.7z && \
 		7z x fluidr3gm_synthlead.sf2.tar && \
 		mv fluidr3gm_synthlead.sf2 FluidPlug.sf2)
@@ -493,7 +493,7 @@ FluidSynthLeads.lv2/FluidPlug.sf2:
 FluidSynthPads.lv2/FluidPlug.sf2:
 	-@mkdir -p $(shell dirname $@)
 	(cd FluidSynthPads.lv2 && \
-		wget http://download.linuxaudio.org/kxstudio/fluidr3-splitted/fluidr3gm_synthpad.sf2.tar.7z && \
+		wget http://download.linuxaudio.org/musical-instrument-libraries/sf2/fluidr3-splitted/fluidr3gm_synthpad.sf2.tar.7z && \
 		7z x fluidr3gm_synthpad.sf2.tar.7z && \
 		7z x fluidr3gm_synthpad.sf2.tar && \
 		mv fluidr3gm_synthpad.sf2 FluidPlug.sf2)
