@@ -58,7 +58,46 @@ install-splitted:
 build: \
 	AirFont320 \
 	FluidGM \
-	FluidBass
+	FluidBass \
+	FluidBrass \
+	FluidChromPerc \
+	FluidDrums \
+	FluidEnsemble \
+	FluidEthnic \
+	FluidGuitars \
+	FluidOrgans \
+	FluidPercussion \
+	FluidPianos \
+	FluidPipes \
+	FluidReeds \
+	FluidSoundFX \
+	FluidStrings \
+	FluidSynthFX \
+	FluidSynthLeads \
+	FluidSynthPads
+
+download: \
+	AirFont320.lv2/FluidPlug.sf2 \
+	FluidGM.lv2/FluidPlug.sf2 \
+	FluidBass.lv2/FluidPlug.sf2 \
+	FluidBrass.lv2/FluidPlug.sf2 \
+	FluidChromPerc.lv2/FluidPlug.sf2 \
+	FluidDrums.lv2/FluidPlug.sf2 \
+	FluidEnsemble.lv2/FluidPlug.sf2 \
+	FluidEthnic.lv2/FluidPlug.sf2 \
+	FluidGuitars.lv2/FluidPlug.sf2 \
+	FluidOrgans.lv2/FluidPlug.sf2 \
+	FluidPercussion.lv2/FluidPlug.sf2 \
+	FluidPianos.lv2/FluidPlug.sf2 \
+	FluidPipes.lv2/FluidPlug.sf2 \
+	FluidReeds.lv2/FluidPlug.sf2 \
+	FluidSoundFX.lv2/FluidPlug.sf2 \
+	FluidStrings.lv2/FluidPlug.sf2 \
+	FluidSynthFX.lv2/FluidPlug.sf2 \
+	FluidSynthLeads.lv2/FluidPlug.sf2 \
+	FluidSynthPads.lv2/FluidPlug.sf2
+
+# ---------------------------------------------------------------------------------------------------------------------
 
 AirFont320: \
 	AirFont320.lv2/FluidPlug.sf2 \
@@ -173,29 +212,6 @@ FluidSynthPads: \
 	FluidSynthPads.lv2/FluidPlug.so \
 	FluidSynthPads.lv2/FluidPlug.ttl \
 	FluidSynthPads.lv2/manifest.ttl
-
-# ---------------------------------------------------------------------------------------------------------------------
-
-download: \
-	AirFont320.lv2/FluidPlug.sf2 \
-	FluidGM.lv2/FluidPlug.sf2 \
-	FluidBass.lv2/FluidPlug.sf2 \
-	FluidBrass.lv2/FluidPlug.sf2 \
-	FluidChromPerc.lv2/FluidPlug.sf2 \
-	FluidDrums.lv2/FluidPlug.sf2 \
-	FluidEnsemble.lv2/FluidPlug.sf2 \
-	FluidEthnic.lv2/FluidPlug.sf2 \
-	FluidGuitars.lv2/FluidPlug.sf2 \
-	FluidOrgans.lv2/FluidPlug.sf2 \
-	FluidPercussion.lv2/FluidPlug.sf2 \
-	FluidPianos.lv2/FluidPlug.sf2 \
-	FluidPipes.lv2/FluidPlug.sf2 \
-	FluidReeds.lv2/FluidPlug.sf2 \
-	FluidSoundFX.lv2/FluidPlug.sf2 \
-	FluidStrings.lv2/FluidPlug.sf2 \
-	FluidSynthFX.lv2/FluidPlug.sf2 \
-	FluidSynthLeads.lv2/FluidPlug.sf2 \
-	FluidSynthPads.lv2/FluidPlug.sf2
 
 # ---------------------------------------------------------------------------------------------------------------------
 
