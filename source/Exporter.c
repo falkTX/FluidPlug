@@ -27,7 +27,7 @@ int main()
     fluid_settings_setint(settings, "synth.threadsafe-api", 0);
 
     fluid_synth_t* const synth = new_fluid_synth(settings);
-    fluid_synth_set_level(synth, 1.0f);
+    fluid_synth_set_gain(synth, 1.0f);
     fluid_synth_set_polyphony(synth, 32);
     fluid_synth_set_sample_rate(synth, 48000.0f);
 

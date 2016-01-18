@@ -100,7 +100,7 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     if (synth == NULL)
         goto cleanup_settings;
 
-    fluid_synth_set_level(synth, 1.0f);
+    fluid_synth_set_gain(synth, 1.0f);
     fluid_synth_set_polyphony(synth, 32);
     fluid_synth_set_sample_rate(synth, (float)sampleRate);
 
@@ -232,7 +232,7 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
         data->needsReset = false;
     }
 
-    fluid_synth_set_level(data->synth, *data->controlLevel);
+    fluid_synth_set_gain(data->synth, *data->controlLevel);
 
     const float currentProgram_f = *data->controlProgram;
     const int   currentProgram_i = (int)(currentProgram_f+0.5f);
