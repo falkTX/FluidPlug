@@ -47,7 +47,7 @@ typedef struct {
 
     // lv2 data
     float*                   buffers[2];
-    const float*             controlGain;
+    const float*             controlLevel;
     const float*             controlProgram;
     int                      currentProgram;
     const LV2_Atom_Sequence* events;
@@ -59,7 +59,7 @@ typedef enum {
     kPortEvents = 0,
     kPortAudioOutL,
     kPortAudioOutR,
-    kPortGain,
+    kPortLevel,
     kPortProgram,
 } FluidSynthPluginPorts;
 
@@ -100,7 +100,7 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     if (synth == NULL)
         goto cleanup_settings;
 
-    fluid_synth_set_gain(synth, 1.0f);
+    fluid_synth_set_level(synth, 1.0f);
     fluid_synth_set_polyphony(synth, 32);
     fluid_synth_set_sample_rate(synth, (float)sampleRate);
 
@@ -193,8 +193,8 @@ static void lv2_connect_port(LV2_Handle instance, uint32_t port, void* dataLocat
         data->buffers[port-1] = dataLocation;
         break;
 
-    case kPortGain:
-        data->controlGain = dataLocation;
+    case kPortLevel:
+        data->controlLevel = dataLocation;
         break;
 
     case kPortProgram:
@@ -232,7 +232,7 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
         data->needsReset = false;
     }
 
-    fluid_synth_set_gain(data->synth, *data->controlGain);
+    fluid_synth_set_level(data->synth, *data->controlLevel);
 
     const float currentProgram_f = *data->controlProgram;
     const int   currentProgram_i = (int)(currentProgram_f+0.5f);
