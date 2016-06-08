@@ -12,7 +12,7 @@
         modgui:label "Chromatic Percussion" ;
         modgui:model "boxy" ;
         modgui:panel "1-select-1-knob" ;
-        modgui:color "tribal1" ;
+        modgui:color "wood4" ;
         modgui:knob "aluminium" ;
         modgui:port [
             lv2:index 0 ;
@@ -20,7 +20,7 @@
             lv2:name "Program" ;
         ] , [
             lv2:index 1 ;
-            lv2:symbol "gain" ;
-            lv2:name "Gain" ;
+            lv2:symbol "level" ;
+            lv2:name "Level" ;
         ] ;
     ] .

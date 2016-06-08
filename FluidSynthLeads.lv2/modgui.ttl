@@ -12,15 +12,15 @@
         modgui:label "Synth Leads" ;
         modgui:model "boxy" ;
         modgui:panel "1-select-1-knob" ;
-        modgui:color "wood3" ;
-        modgui:knob "steel" ;
+        modgui:color "lava" ;
+        modgui:knob "black" ;
         modgui:port [
             lv2:index 0 ;
             lv2:symbol "program" ;
             lv2:name "Program" ;
         ] , [
             lv2:index 1 ;
-            lv2:symbol "gain" ;
-            lv2:name "Gain" ;
+            lv2:symbol "level" ;
+            lv2:name "Level" ;
         ] ;
     ] .

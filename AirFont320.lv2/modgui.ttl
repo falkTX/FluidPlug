@@ -8,7 +8,7 @@
         modgui:stylesheet <modgui/stylesheet-airfont320.css> ;
         modgui:screenshot <modgui/screenshot-airfont320.png> ;
         modgui:thumbnail <modgui/thumbnail-airfont320.png> ;
-        modgui:brand "FLUIDSYNTH" ;
+        modgui:brand "FLUID" ;
         modgui:label "AirFont320" ;
         modgui:model "boxy" ;
         modgui:panel "1-select-1-knob" ;
@@ -20,7 +20,7 @@
             lv2:name "Program" ;
         ] , [
             lv2:index 1 ;
-            lv2:symbol "gain" ;
-            lv2:name "Gain" ;
+            lv2:symbol "level" ;
+            lv2:name "Level" ;
         ] ;
     ] .

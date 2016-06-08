@@ -4,15 +4,15 @@
 <http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidEthnic>
     modgui:gui [
         modgui:resourcesDirectory <modgui> ;
-        modgui:iconTemplate <modgui/icon-fluid-ethnic-percussion.html> ;
-        modgui:stylesheet <modgui/stylesheet-fluid-ethnic-percussion.css> ;
-        modgui:screenshot <modgui/screenshot-fluid-ethnic-percussion.png> ;
-        modgui:thumbnail <modgui/thumbnail-fluid-ethnic-percussion.png> ;
+        modgui:iconTemplate <modgui/icon-fluid-ethnic.html> ;
+        modgui:stylesheet <modgui/stylesheet-fluid-ethnic.css> ;
+        modgui:screenshot <modgui/screenshot-fluid-ethnic.png> ;
+        modgui:thumbnail <modgui/thumbnail-fluid-ethnic.png> ;
         modgui:brand "FluidGM" ;
-        modgui:label "Ethnic Percussion" ;
+        modgui:label "Ethnic" ;
         modgui:model "boxy" ;
         modgui:panel "1-select-1-knob" ;
-        modgui:color "tribal2" ;
+        modgui:color "flowerpower" ;
         modgui:knob "steel" ;
         modgui:port [
             lv2:index 0 ;
@@ -20,7 +20,7 @@
             lv2:name "Program" ;
         ] , [
             lv2:index 1 ;
-            lv2:symbol "gain" ;
-            lv2:name "Gain" ;
+            lv2:symbol "level" ;
+            lv2:name "Level" ;
         ] ;
     ] .

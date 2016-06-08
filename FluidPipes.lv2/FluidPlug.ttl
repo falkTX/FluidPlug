@@ -32,8 +32,8 @@
     ] , [
         a lv2:InputPort, lv2:ControlPort ;
         lv2:index 3 ;
-        lv2:symbol "gain" ;
-        lv2:name "Gain" ;
+        lv2:symbol "level" ;
+        lv2:name "Level" ;
         lv2:default 1.0 ;
         lv2:minimum 0.0 ;
         lv2:maximum 2.0 ;
@@ -87,5 +87,5 @@
     rdfs:comment """This plugin contains the 'Pipe' section of the Fluid GM soundfont.
 The Fluid GM soundfont was constructed in part from edited/cleaned/remixed/programmed samples found in the public domain and recordings made by Frank Wen.""" ;
 
-    lv2:microVersion 1 ;
-    lv2:minorVersion 0 .
+    lv2:minorVersion 2 ;
+    lv2:microVersion 0 .

@@ -20,7 +20,7 @@
             lv2:name "Program" ;
         ] , [
             lv2:index 1 ;
-            lv2:symbol "gain" ;
-            lv2:name "Gain" ;
+            lv2:symbol "level" ;
+            lv2:name "Level" ;
         ] ;
     ] .

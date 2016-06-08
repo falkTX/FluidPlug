@@ -32,8 +32,8 @@
     ] , [
         a lv2:InputPort, lv2:ControlPort ;
         lv2:index 3 ;
-        lv2:symbol "gain" ;
-        lv2:name "Gain" ;
+        lv2:symbol "level" ;
+        lv2:name "Level" ;
         lv2:default 1.0 ;
         lv2:minimum 0.0 ;
         lv2:maximum 2.0 ;
@@ -1037,5 +1037,5 @@
 
     rdfs:comment "AirFont 320 made in 2005 by Milton Paredes." ;
 
-    lv2:microVersion 1 ;
-    lv2:minorVersion 0 .
+    lv2:minorVersion 2 ;
+    lv2:microVersion 0 .
