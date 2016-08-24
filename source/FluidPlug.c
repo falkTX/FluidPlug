@@ -104,6 +104,11 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     fluid_synth_set_polyphony(synth, 32);
     fluid_synth_set_sample_rate(synth, (float)sampleRate);
 
+#ifdef __arm__
+    // let's be nice to the poor cpus...
+    fluid_synth_set_interp_method(synth, -1, FLUID_INTERP_LINEAR);
+#endif
+
     char* filename = malloc(strlen(bundlePath) + 14 /* strlen("/FluidPlug.sf2") */ + 1);
 
     if (filename == NULL)
@@ -161,6 +166,11 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     data->currentProgram = 0;
     data->midiEventURID  = uridMap->map(uridMap->handle, LV2_MIDI__MidiEvent);
     data->needsReset     = false;
+
+    // boostrap synth engine
+    float l[1024];
+    float r[1024];
+    fluid_synth_write_float(synth, 1024, l, 0, 1, r, 0, 1);
 
     return data;
 
