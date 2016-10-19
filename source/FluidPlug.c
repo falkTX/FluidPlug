@@ -167,6 +167,9 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     data->midiEventURID  = uridMap->map(uridMap->handle, LV2_MIDI__MidiEvent);
     data->needsReset     = false;
 
+    // null control values, connection optional
+    data->controlProgram = NULL;
+
     // boostrap synth engine
     float l[1024];
     float r[1024];
@@ -244,13 +247,16 @@ static void lv2_run(LV2_Handle instance, uint32_t frames)
 
     fluid_synth_set_gain(data->synth, *data->controlLevel);
 
-    const float currentProgram_f = *data->controlProgram;
-    const int   currentProgram_i = (int)(currentProgram_f+0.5f);
-
-    if (currentProgram_i != data->currentProgram && currentProgram_i >= 0)
+    if (data->controlProgram != NULL)
     {
-        data->currentProgram = currentProgram_i;
-        fluid_synth_program_select(data->synth, 0, data->synthId, data->programs[currentProgram_i].bank, data->programs[currentProgram_i].prog);
+        const float currentProgram_f = *data->controlProgram;
+        const int   currentProgram_i = (int)(currentProgram_f+0.5f);
+
+        if (currentProgram_i != data->currentProgram && currentProgram_i >= 0)
+        {
+            data->currentProgram = currentProgram_i;
+            fluid_synth_program_select(data->synth, 0, data->synthId, data->programs[currentProgram_i].bank, data->programs[currentProgram_i].prog);
+        }
     }
 
     uint32_t frameOffset = 0;
