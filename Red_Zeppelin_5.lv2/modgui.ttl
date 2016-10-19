@@ -1,0 +1,22 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://kxstudio.linuxaudio.org/plugins/FluidPlug_Red_Zeppelin_5>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-red-zeppelin-5.html> ;
+        modgui:stylesheet <modgui/stylesheet-red-zeppelin-5.css> ;
+        modgui:screenshot <modgui/screenshot-red-zeppelin-5.png> ;
+        modgui:thumbnail <modgui/thumbnail-red-zeppelin-5.png> ;
+        modgui:brand "AV Linux" ;
+        modgui:label "Red Zeppelin 5" ;
+        modgui:model "boxy" ;
+        modgui:panel "1-knob" ;
+        modgui:color "red" ;
+        modgui:knob "gold" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "level" ;
+            lv2:name "Level" ;
+        ] ;
+    ] .

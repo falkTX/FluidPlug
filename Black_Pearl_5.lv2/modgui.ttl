@@ -1,0 +1,22 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://kxstudio.linuxaudio.org/plugins/FluidPlug_Black_Pearl_5>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-black-pearl-5.html> ;
+        modgui:stylesheet <modgui/stylesheet-black-pearl-5.css> ;
+        modgui:screenshot <modgui/screenshot-black-pearl-5.png> ;
+        modgui:thumbnail <modgui/thumbnail-black-pearl-5.png> ;
+        modgui:brand "AV Linux" ;
+        modgui:label "Black Pearl 5" ;
+        modgui:model "boxy" ;
+        modgui:panel "1-knob" ;
+        modgui:color "black" ;
+        modgui:knob "blue" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "level" ;
+            lv2:name "Level" ;
+        ] ;
+    ] .
