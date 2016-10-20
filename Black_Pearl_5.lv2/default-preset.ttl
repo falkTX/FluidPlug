@@ -1,0 +1,12 @@
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix pset:  <http://lv2plug.in/ns/ext/presets#> .
+@prefix state: <http://lv2plug.in/ns/ext/state#> .
+
+<default-preset>
+	a pset:Preset ;
+	lv2:appliesTo <http://kxstudio.linuxaudio.org/plugins/FluidPlug_Black_Pearl_5> ;
+	lv2:port [
+		lv2:symbol "level" ;
+		pset:value 1.0
+	] .
+
