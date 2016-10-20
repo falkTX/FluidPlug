@@ -5,3 +5,10 @@
     a lv2:Plugin ;
     lv2:binary <FluidPlug.so> ;
     rdfs:seeAlso <FluidPlug.ttl> , <modgui.ttl> .
+
+
+<default-preset>
+    a <http://lv2plug.in/ns/ext/presets#Preset> ;
+    <http://lv2plug.in/ns/lv2core#appliesTo> <http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidStrings> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Default" ;
+    <http://www.w3.org/2000/01/rdf-schema#seeAlso> <default-preset.ttl> .
