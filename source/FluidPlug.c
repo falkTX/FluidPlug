@@ -130,11 +130,19 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
         goto cleanup_synth;
 
     size_t count;
+#if FLUIDSYNTH_VERSION_MAJOR < 2
     fluid_preset_t preset;
 
     sfont->iteration_start(sfont);
     for (count = 0; sfont->iteration_next(sfont, &preset) != 0;)
         ++count;
+#else
+    fluid_preset_t *preset = NULL;
+
+    fluid_sfont_iteration_start(sfont);
+    for (count = 0; (preset = fluid_sfont_iteration_next(sfont)) != NULL;)
+        ++count;
+#endif
 
     if (count == 0)
         goto cleanup_synth;
@@ -144,6 +152,7 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     if (programs == NULL)
         goto cleanup_synth;
 
+#if FLUIDSYNTH_VERSION_MAJOR < 2
     sfont->iteration_start(sfont);
     for (count = 0; sfont->iteration_next(sfont, &preset) != 0;)
     {
@@ -153,6 +162,17 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
         };
         programs[count++] = bp;
     }
+#else
+    fluid_sfont_iteration_start(sfont);
+    for (count = 0; (preset = fluid_sfont_iteration_next(sfont)) != NULL;)
+    {
+        const BankProgram bp = {
+            fluid_preset_get_banknum(preset),
+            fluid_preset_get_num(preset)
+        };
+        programs[count++] = bp;
+    }
+#endif
 
     fluid_synth_program_select(synth, 0, synthId, programs[0].bank, programs[0].prog);
 
