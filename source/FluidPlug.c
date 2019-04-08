@@ -92,7 +92,7 @@ static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, doub
     //fluid_settings_setint(settings, "synth.audio-channels", use16Outs ? 16 : 1);
     //fluid_settings_setint(settings, "synth.audio-groups", use16Outs ? 16 : 1);
     fluid_settings_setnum(settings, "synth.sample-rate", sampleRate);
-    fluid_settings_setint(settings, "synth.parallel-render", 1);
+    //fluid_settings_setint(settings, "synth.parallel-render", 1);
     fluid_settings_setint(settings, "synth.threadsafe-api", 0);
 
     fluid_synth_t* const synth = new_fluid_synth(settings);
