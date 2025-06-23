@@ -20,11 +20,20 @@
 #include <string.h>
 
 #include <fluidsynth.h>
+
+#if defined(__has_include) && __has_include(<lv2/core/lv2.h>)
+#include <lv2/core/lv2.h>
+#include <lv2/atom/atom.h>
+#include <lv2/atom/util.h>
+#include <lv2/midi/midi.h>
+#include <lv2/urid/urid.h>
+#else
 #include <lv2/lv2plug.in/ns/lv2core/lv2.h>
 #include <lv2/lv2plug.in/ns/ext/atom/atom.h>
 #include <lv2/lv2plug.in/ns/ext/atom/util.h>
 #include <lv2/lv2plug.in/ns/ext/midi/midi.h>
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
+#endif
 
 #ifndef FLUIDPLUG_LABEL
 #error FLUIDPLUG_LABEL undefined
@@ -63,7 +72,7 @@ typedef enum {
     kPortProgram,
 } FluidSynthPluginPorts;
 
-static LV2_Handle lv2_instantiate(const struct _LV2_Descriptor* descriptor, double sampleRate, const char* bundlePath, const LV2_Feature* const* features)
+static LV2_Handle lv2_instantiate(const struct LV2_Descriptor* descriptor, double sampleRate, const char* bundlePath, const LV2_Feature* const* features)
 {
     const LV2_URID_Map* uridMap = NULL;
 
